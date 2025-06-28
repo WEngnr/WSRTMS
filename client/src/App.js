@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
+
+// 🔑 Replace these with your actual Supabase project values
+const supabaseUrl = 'https://your-project-ref.supabase.co';
+const supabaseKey = 'your-anon-public-key';
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 function App() {
   const [formData, setFormData] = useState({
@@ -15,12 +21,19 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch('http://localhost:5000/api/tickets', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+      const { error } = await supabase
+        .from('tickets')
+        .insert([formData]);
+
+      if (error) {
+        throw error;
+      }
+
       alert('Service request submitted successfully!');
+      setFormData({
+               product: '',
+        issue: ''
+      });
     } catch (error) {
       alert('Failed to submit the request.');
       console.error(error);
@@ -37,8 +50,7 @@ function App() {
           value={formData.name}
           onChange={handleChange}
           required
-        /><br /><br />
-        <input
+       input
           name="contact"
           placeholder="Contact Info"
           value={formData.contact}
