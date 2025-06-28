@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
 // 🔑 Replace these with your actual Supabase project values
-const supabaseUrl = 'https://your-project-ref.supabase.co';
-const supabaseKey = 'your-anon-public-key';
+const supabaseUrl = 'https://ejyamnnglsdikqysoznc.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqeWFtbm5nbHNkaWtxeXNvem5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTExMTM0NDcsImV4cCI6MjA2NjY4OTQ0N30.I2_t7jVvnX0Jy8n83h1hb47zTR8TXwbxGYc0Pvld2xw';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 function App() {
