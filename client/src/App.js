@@ -44,19 +44,22 @@ function App() {
     <div style={{ padding: '20px', fontFamily: 'Arial' }}>
       <h1>Customer Service Request Form</h1>
       <form onSubmit={handleSubmit}>
-        <input
-          name="name"
-          placeholder="Full Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-       input
-          name="contact"
-          placeholder="Contact Info"
-          value={formData.contact}
-          onChange={handleChange}
-          required
+       <input
+         name="name"
+         placeholder="Full Name"
+         value={formData.name}
+         onChange={handleChange}
+         required
         /><br /><br />
+
+       <input
+         name="contact"
+         placeholder="Contact Info"
+         value={formData.contact}
+         onChange={handleChange}
+         required
+        /><br /><br />
+
         <input
           name="product"
           placeholder="Product Details"
