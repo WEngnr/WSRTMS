@@ -20,6 +20,16 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // ✅ Validation
+    if (!formData.name || !formData.contact || !formData.product || !formData.issue) {
+      alert('Please fill in all fields before submitting.');
+      return;
+    }
+
+    // 📝 Log form data
+    console.log('Submitting formData:', formData);
+
     try {
       const { error } = await supabase
         .from('tickets')
@@ -30,50 +40,45 @@ function App() {
       }
 
       alert('Service request submitted successfully!');
-      setFormData({
-               product: '',
-        issue: ''
-      });
+      // 🔄 Reset all fields
+      setFormData({ name: '', contact: '', product: '', issue: '' });
     } catch (error) {
       alert('Failed to submit the request.');
-      console.error(error);
+      console.error('Submission error:', error);
     }
   };
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial' }}>
-      <h1>Customer Service Request Form</h1>
+    <div>
+      <h2>Customer Service Request Form</h2>
       <form onSubmit={handleSubmit}>
-       <input
-         name="name"
-         placeholder="Full Name"
-         value={formData.name}
-         onChange={handleChange}
-         required
-        /><br /><br />
-
-       <input
-         name="contact"
-         placeholder="Contact Info"
-         value={formData.contact}
-         onChange={handleChange}
-         required
-        /><br /><br />
-
         <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="contact"
+          placeholder="Contact Info"
+          value={formData.contact}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
           name="product"
-          placeholder="Product Details"
+          placeholder="Product Name"
           value={formData.product}
           onChange={handleChange}
-          required
-        /><br /><br />
+        />
         <textarea
           name="issue"
           placeholder="Describe the issue"
           value={formData.issue}
           onChange={handleChange}
-          required
-        /><br /><br />
+        />
         <button type="submit">Submit</button>
       </form>
     </div>
