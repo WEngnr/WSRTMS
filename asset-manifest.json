@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/WSRTMS/static/js/main.f6856903.js",
+    "index.html": "/WSRTMS/index.html",
+    "main.f6856903.js.map": "/WSRTMS/static/js/main.f6856903.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.f6856903.js"
+  ]
+}
