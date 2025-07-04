@@ -32,7 +32,7 @@ function App() {
 
     try {
       const { error } = await supabase
-        .from('tickets')
+        .from('Ticket System')
         .insert([formData]);
 
       if (error) {
